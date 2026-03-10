@@ -3,6 +3,10 @@ import random
 
 #Функція для генерації унікальних випадкових чисел у відповідному діапазоні
 def get_numbers_ticket(min: int, max: int, quantity: int):
+    
+    if min < 1 or max > 1000 or quantity > (max - min + 1) or quantity <= 0:
+        return [] # Якщо передано значення, які невідповідають умовам, одразу повертаємо порожній список
+    
     #Блок якщо код відпрацює    
     try:
         #Генеруємо список випадкових чисел у відповідному діапазоні
@@ -21,3 +25,7 @@ def get_numbers_ticket(min: int, max: int, quantity: int):
     except ValueError:
         print('Sample larger than population')
         return []
+
+
+lottery_numbers = get_numbers_ticket(-10, 10, 5)
+print("Ваші лотерейні числа:", lottery_numbers)
